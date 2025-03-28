@@ -1,0 +1,120 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 67%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 260 84% 64%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 25% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 260 84% 64%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 27% 20%;
+    --input: 215 27% 15%;
+    --ring: 217 91% 67%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth bg-tech-dark;
+  }
+
+  body {
+    @apply bg-gradient-to-b from-tech-dark to-tech-darker text-foreground antialiased;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-tech-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-tech-gray/20 rounded-full transition-colors hover:bg-tech-gray/40;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl;
+  }
+  
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-bold mb-8 relative inline-block;
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-1/2 h-1 bg-gradient-to-r from-tech-blue to-tech-purple rounded-full;
+  }
+  
+  .nav-link {
+    @apply relative text-tech-light-gray/80 hover:text-white transition-colors duration-300 
+           after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 
+           after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-tech-blue after:to-tech-purple 
+           after:origin-bottom-right after:transition-transform after:duration-300 
+           hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  .button-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-tech-blue to-tech-purple text-white font-medium 
+           rounded-lg shadow-lg transition-all duration-300 hover:shadow-tech-blue/20 
+           hover:shadow-xl transform hover:-translate-y-1 focus:outline-none focus:ring-2 
+           focus:ring-tech-blue/50 active:translate-y-0;
+  }
+  
+  .button-secondary {
+    @apply px-6 py-3 bg-muted text-white font-medium rounded-lg shadow transition-all 
+           duration-300 hover:bg-muted/80 transform hover:-translate-y-1 focus:outline-none 
+           focus:ring-2 focus:ring-muted/50 active:translate-y-0;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-muted/50 border border-border rounded-lg focus:ring-2 
+           focus:ring-tech-blue/50 focus:border-tech-blue/50 focus:outline-none 
+           transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .grid-projects {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .grid-skills {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+}

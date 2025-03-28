@@ -1,0 +1,44 @@
+
+/* Custom animations will be handled directly in the Tailwind config and index.css */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Make sure any animations run properly */
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) !important;
+  transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+}
+
+/* Force all animated elements to be initially visible even before JavaScript loads */
+.animate-fade-in, .animate-slide-up, .animate-slide-in-right {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* Only apply the initial hidden state once JavaScript is available */
+.js-loaded .animate-fade-in, .js-loaded .animate-slide-up, .js-loaded .animate-slide-in-right {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Smooth transitions between sections */
+section {
+  transition: background-color 0.5s ease;
+}
+
+/* Ensure proper scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Support for backdrop-filter in all browsers */
+@supports not (backdrop-filter: blur(10px)) {
+  .glass-panel {
+    background-color: rgba(15, 17, 33, 0.85) !important;
+  }
+}
